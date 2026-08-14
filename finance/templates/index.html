@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h1>Portfolio</h1>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+            <tr>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.totalshares }}</td>
+                <td>{{ stock.price | usd }}</td>
+                <td>{{ (stock.price * stock.totalshares) | usd }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="4">Stock Value: {{ stockvalue | usd }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">Cash: {{ cash | usd }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">Total Value: {{ (stockvalue + cash) | usd}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Make a Deposit</h1>
+    <form action="/deposit" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="deposit" name="deposit" placeholder="Enter Deposit Amount" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Click to Deposit</button>
+    </form>
+{% endblock %}
+

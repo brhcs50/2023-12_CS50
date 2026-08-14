@@ -1,0 +1,6 @@
+
+// loop to get input for height from user, between 1 and 8
+
+// loop to print brick rows
+    // loop to print brick columns
+        //loop to print spaces before #

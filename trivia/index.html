@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            //-- DOMContentLoaded waits for the page to compeltely load before running anything in the <head> area
+            document.addEventListener("DOMContentLoaded", function() {
+                //-- multiple choice section 1, result1
+                //-- green button background on correct answer
+                //-- querySelector (from instructions) searches the body and returns the first matching item
+                //-- ".correct" is searching for a class called correct (. indicates class)
+                let correct = document.querySelector(".correct");
+                correct.addEventListener("click", function() {
+                    correct.style.backgroundColor = "green";
+                    document.querySelector("#result1").innerHTML = "Correct";
+                });
+                //-- now using the same logic for incorrect answers (class called incorrect)
+                //-- querySelectorAll (from instructions) searches the body and returns an array of all matching items
+                //-- otherwise, only the first wrong answer will turn red and print incorrect
+                //-- Need a loop to check each incorrect answer in the array
+                let incorrect = document.querySelectorAll(".incorrect");
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener("click", function() {
+                        incorrect[i].style.backgroundColor = "red";
+                        document.querySelector("#result1").innerHTML = "Incorrect";
+                    });
+                }
+                //-- this is for the free answer section, result2
+                //-- listen for the button to click, then check if the input in nthe htext box is correct or incorrect
+                document.querySelector("#confirm").addEventListener("click", function () {
+                    let input = document.querySelector("input");
+                    if (input.value.toLowerCase() == "green") {
+                        input.style.backgroundColor = "green";
+                        document.querySelector("#result2").innerHTML = "Correct";
+                    }
+                    else {
+                        input.style.backgroundColor = "red";
+                        document.querySelector("#result2").innerHTML = "Incorrect";
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the name of the player-controlled character in the 1982 arcade game Donkey Kong?</h3>
+                <button type="text" class="incorrect">Donkey Kong</button>
+                <button type="text" class="incorrect">Mario</button>
+                <button type="text" class="incorrect">Clyde</button>
+                <button type="text" class="correct">Jumpman</button>
+                <button type="text" class="incorrect">Luigi</button>
+                <p id="result1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What is my favorite color?</h3>
+                <form>
+                    <input type="text" placeholder="Color">
+                    <button type="text" id="confirm">Confirm Answer</button>
+                    <p id="result2"></p>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

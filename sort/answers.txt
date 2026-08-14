@@ -1,0 +1,58 @@
+sort1 uses: Bubble Sort
+
+How do you know?: Bubble Sort has O(n^2) and Omega(n), meaning that if the file is already sorted, it will be much faster than non-sorted files.
+    This is the case according to the times I collected below.
+
+sort2 uses: Merge Sort
+
+How do you know?: Merge Sort has O(n log n) and Omega(n log n).
+    Sorting will be the fastest on a random list, as shown in the times I collected.
+
+sort3 uses: Selection Sort
+
+How do you know?: Selection Sort has O(n^2) and Omega(n^2).
+    Regardless of the file, the sorting will be slow, but a pre-sorted file will not gain any benefit.
+
+
+
+// -- sort1 times
+// -- all files are the slowest sort method overall, "sorted" the fastest in this method
+// -- BUBBLE? O(n^2) and Omega(n), "if we get lucky with an already sorted list, it goes fast" - lab video
+sorted5000.txt          sorted10k:              sorted50k:
+real    0m0.046s        real    0m0.091s        real    0m1.283s
+
+random5000.txt          random10k:              random50k:
+real    0m0.065s        real    0m0.235s        real    0m6.423s
+
+reversed5000.txt        reversed10k             reversed50k:
+real    0m0.084s        real    0m0.414s        real    0m5.659s
+
+
+
+// -- sort2 times
+// -- all files are the fastest sort method overall, "backwards" and "random" the fastest in this method
+// -- MERGE? O(n log n) and Omega(n log n)
+sorted5000.txt          sorted10k:              sorted50k:
+real    0m0.032s        real    0m0.071s        real    0m0.783s
+
+random5000.txt          random10k:              random50k:
+real    0m0.091s        real    0m0.068s        real    0m0.561s
+
+reversed5000.txt        reversed10k:            reversed50k:
+real    0m0.033s        real    0m0.151s        real    0m0.484s
+
+
+
+// -- sort3 times
+// -- almost the same speed on each file, "sorted" is the slowest of all sort methods
+// -- SELECTION? O(n^2) and Omega(n^2)
+sorted5000.txt          sorted10k:              sorted50k:
+real    0m0.049s        real    0m0.164s        real    0m2.763s
+
+random5000.txt          random10k:              random50k:
+real    0m0.049s        real    0m0.200s        real    0m2.385s
+
+reversed5000.txt        reversed10k:            reversed50k:
+real    0m0.059s        real    0m0.176s        real    0m2.704s
+
+

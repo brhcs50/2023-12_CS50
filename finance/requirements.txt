@@ -1,0 +1,18 @@
+cs50
+Flask
+Flask-Session
+requests
+
+
+Add one or more new tables to finance.db via which to keep track of the purchase. Store enough information so that you know who bought what at what price and when.
+    Use appropriate SQLite types.
+    Define UNIQUE indexes on any fields that should be unique.
+    Define (non-UNIQUE) indexes on any fields via which you will search (as via SELECT with WHERE).
+
+CREATE TABLE brandontable (
+    user_id INTEGER NOT NULL,
+    symbol TEXT NOT NULL,
+    shares INTEGER NOT NULL,
+    price NUMERIC NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCEs users(id)
+);

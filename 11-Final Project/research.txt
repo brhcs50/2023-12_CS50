@@ -1,0 +1,34 @@
+if i want to do a file output:
+    want to capture starttime, endtime to add to output file
+    want to strip arp output to capture only the mac address to add to output file
+    do i need an array to capture open ports for output to file?
+    
+    
+    
+    
+    
+https://docs.python.org/3/library/ipaddress.html
+
+import ipaddress
+
+
+Integers can be added to or subtracted from address objects. Some examples:
+    -IPv4Address('127.0.0.2') + 3
+    -IPv4Address('127.0.0.2') - 3
+    -IPv4Address('255.255.255.255') + 1
+
+ipaddress.ip_network('192.168.0.0/28')
+
+
+ipaddress.summarize_address_range(first, last)
+    Return an iterator of the summarized network range given the first and last IP addresses. 
+    "first" is the first IPv4Address or IPv6Address in the range and "last" is the last IPv4Address or IPv6Address in the range.
+    -A TypeError is raised if first or last are not IP addresses or are not of the same version.
+    -A ValueError is raised if last is not greater than first or if first address version is not 4 or 6.
+    
+    [ipaddr for ipaddr in ipaddress.summarize_address_range(
+        ipaddress.IPv4Address('192.0.2.0'),
+        ipaddress.IPv4Address('192.0.2.130')
+        )
+    ]
+

@@ -1,0 +1,35 @@
+
+Spotify Wrapped is a feature presenting Spotify users’ 100 most played songs from the past year.
+In 2021, Spotify Wrapped calculated an “Audio Aura” for each user, a “reading of [their] two most
+prominent moods as dictated by [their] top songs and artists of the year.” Suppose Spotify determines
+an audio aura by looking at the average energy, valence, and danceability of a person’s top 100 songs
+from the past year. In answers.txt, reflect on the following questions:
+
+
+If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+
+I Googled some info about Spotify's Audio Aura, and they categorize "Moods" by color, then present a combination
+of two colors as the user's Audio Aura: (https://engineering.atspotify.com/2021/12/the-audio-aura-story-mystical-to-mathematical/).
+I'm not sure if the given question is asking about this, or deriving its own interpretation for simplicity.
+I was not able to find information on the specific calculation used to get the overall "Mood" value, which is
+a decimal value from 0.0 to 1.0, somehow associated with "calm," "happy," and so on, which is then associated
+with one color. The overall Audio Aura is a combination of two of these colors.
+
+Based on the averages, it does not seem that this listener's preferences skew heavily to one
+extreme or the other, but is slightly more energetic and danceable than the median.
+
+SELECT AVG(energy) FROM songs;
+    0.65906 =
+SELECT AVG(valence) FROM songs;
+    0.484443
+SELECT AVG(danceability) FROM songs;
+    0.71646
+
+
+Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener. What better ways of calculating this aura would you propose?
+
+Spotify recommends new songs based on what you've already been listening to. This creates a kind of feedback loop, where you are only being exposed to something
+you are already familiar with. So once the algorithm has decided "who you are" you won't be exposed to other styles of music. Spotify says you're a happy person
+because they only play dance music for you while you are in the shower and can't change it.
+
+A different method may be to only include music that the person has specifically selected, or is from one of their manually created playlists.

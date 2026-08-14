@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <h1>{{ quote['name'] }}</h1>
+    <p>Price: {{ quote['price'] }}</p>
+
+    <h1>Enter Symbol for Stock Quote</h1>
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock Ticker Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Click to Get Quote</button>
+    </form>
+{% endblock %}
+
